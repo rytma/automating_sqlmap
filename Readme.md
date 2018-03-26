@@ -10,7 +10,7 @@
 Clone the repository to your local machine the cd into the directory that was created by the cloning
 
 ```
-git clone https://github.com/automating_sqlmap/automating_sqlmap.git
+git clone https://github.com/automating_sqlmap
 cd automating_sqlmap
 ```
 
