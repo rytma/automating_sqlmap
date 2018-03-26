@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img src="https://sqlmap-api.github.io/media/sqli.png" alt="sqlmap-icon">
+	<img src="https://github.com/rytma/automating_sqlmap/blob/master/inject.png" alt="sqlmap-icon">
 </h1>
 
 <div align="center">
