@@ -110,7 +110,7 @@ public class SqlmapManager {
 			SqlmapLogItem i = new SqlmapLogItem();
 			JSONObject item = (JSONObject)x;
 			i.setMessage(item.getString("message"));
-			i.setLevel(json.getString("level"));
+			i.setLevel(item.getString("level"));
 			i.setTime(item.getString("time"));
 			logItems.add(i);
 		});

@@ -24,7 +24,7 @@ public class Main {
 		SqlmapStatus status = mgr.getScanStatus(taskid);
 		
 		// while running
-		while (status.getStatus() != "terminated") {
+		while (!status.getStatus().equals("terminated")) {
 			try {
 				Thread.sleep(10000);
 				status = mgr.getScanStatus(taskid);
