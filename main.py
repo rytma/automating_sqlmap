@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import time
-import logging
+import logging, coloredlogs
 
 from SqlmapSession import SqlmapLogItem, SqlmapSession, SqlmapStatus
 from SqlmapManager import SqlmapManager
 
+
+# create logger
 logger = logging.getLogger('SQLMap')
-logger.setLevel(logging.DEBUG)
-formatter = logging.Formatter("%(asctime)15s - %(name)s - %(levelname)s - %(message)s")
-handler = logging.StreamHandler()
-handler.setFormatter(formatter)
-logger.addHandler(handler)
+# install handler and set level
+coloredlogs.install(level='DEBUG', logger=logger) # passing logger object to evade libraries logs
+
 
 def main():
     session = SqlmapSession('127.0.0.1', 8775)
@@ -38,8 +38,16 @@ def main():
 
     logs = mgr.get_logs(taskid)
     for log in logs:
-        logger.info('LOG - ' + log._message)
-
+        if log._level == 'WARNING':
+            logger.warning(log._message)
+        elif log._level == 'INFO':
+            logger.info(log._message)
+        elif log._level == 'CRITICAL':
+            logger.critical(log._message)
+        elif log._level == 'DEBUG':
+            logger.debug(log._message)
+        else:
+            logger.debug(log._level + ' - ' + log._message)
 
     logger.debug('Deleting task')
     if mgr.delete_task(taskid):
